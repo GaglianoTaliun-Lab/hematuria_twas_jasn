@@ -10,7 +10,7 @@ library(ggplot2)
 # define if to look up in sQTL or eQTL tables:
 QTL="eqtl"
 
-setwd(paste("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/MASHR/", QTL, "/mashr/", sep=""))
+setwd(paste("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/MASHR/", QTL, "/mashr/", sep=""))
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # loop to extract info about number of SNP predictors per gene across all tissues
@@ -43,7 +43,7 @@ for (i in 1:49) {
 tissue_snps_df_all <- bind_rows(tissue_snps_all)
 
 ### import file with sample size per tissue:
-tissues_sample_size <- read.csv("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/GTEx_number_samples.csv", header = T)[,c(1,3)]
+tissues_sample_size <- read.csv("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/GTEx_number_samples.csv", header = T)[,c(1,3)]
 tissue_snps_df_all <- left_join(tissue_snps_df_all, tissues_sample_size, by = "tissue")
 
 # export tables:
@@ -107,5 +107,5 @@ for (i in 1:49) {
 tissue_gene <- bind_rows(tissue_gene)
 
 write.table(tissue_gene, 
-            paste0("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/spredixcan_output/predictors_for_MR/gene_",my_gene,".tsv"),
+            paste0("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/predictors_for_MR/gene_",my_gene,".tsv"),
             sep = "\t", quote = F, row.names = F)

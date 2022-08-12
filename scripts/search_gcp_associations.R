@@ -2,7 +2,7 @@ library(dplyr)
 library(tidyr)
 library(arrow)
 
-project_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/GCP_all_associations/"
+project_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/GCP_all_associations/"
 
 chr2_EUR_kidney <- read_parquet(paste0(project_dir,"Kidney_Cortex.v8.EUR.sqtl_allpairs.chr2.parquet"))
 # chr2_all_kidney <- read_parquet(paste0(project_dir,"Kidney_Cortex.v8.cis_sqtl.all_pairs.chr2.parquet"))

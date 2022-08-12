@@ -4,16 +4,16 @@ library(dplyr)
 
 #### for sqtl, there are no gene names, therefore need to separate the chr and start-end position from gene_name
 
-home_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/multixcan_output/"
+home_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan_output/"
 
 ### read reference from Homo sapiens obtained from: https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz
 ### this file includes gene symbols and IDs and chromosome, but not start/end position of the gene
-read.table("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/gene_info_chr_maplocation.txt", sep = "\t", header = T) %>%
+read.table("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/gene_info_chr_maplocation.txt", sep = "\t", header = T) %>%
   filter(., chromosome %in% (1:22)) -> gene_symbol_reference
 
 ### read reference from Homo sapiens obtained from: https://ftp.ncbi.nih.gov/gene/DATA/gene_neighbors.gz
 ### this file includes gene IDs, chromosome, start/end positions, but not gene symbols.
-read.table("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/geneID_pos_maplocation.txt", sep = "\t", header = T) %>%
+read.table("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/geneID_pos_maplocation.txt", sep = "\t", header = T) %>%
   filter(., chromosome %in% (1:22)) -> gene_ID_reference
 
 ### read output from multixcan:
@@ -53,6 +53,6 @@ genes_mapped2 %>%
     end_position) -> genes_mapped3
 
 ### write output into new file:
-out_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/multixcan_output/"
+out_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan_output/"
 write.table(genes_mapped3, paste0(out_dir, "hematuria_eqtl_smultixcan_mapped.txt"), sep = "\t", row.names = F, quote = F)
 

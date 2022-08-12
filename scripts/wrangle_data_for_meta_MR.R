@@ -14,7 +14,7 @@ library(data.table)
 # Set arguments
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project")
+project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project")
 
 # snps that are present in both datasets (using the proxy for the SNPs not present in CKDGEN and for the palindromic SNP)
 snps_P3H2 <- c("rs11915773","rs710590","rs6783292","rs838268")

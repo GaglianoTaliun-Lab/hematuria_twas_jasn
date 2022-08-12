@@ -32,7 +32,7 @@ library(data.table)
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-project_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project"
+project_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
 # dbsnp_144 <- SNPlocs.Hsapiens.dbSNP144.GRCh37
 # path_hg38_hg37 <- here(project_dir,"reference_data","hg38ToHg19.over.chain")
 

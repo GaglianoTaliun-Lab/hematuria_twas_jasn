@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=1G
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/hematuria_project"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
 
 # get data from TWAS for eQTLs:
 awk '{FS = OFS = "\t"} {print $2,$20,$22,$3}' $HOMEPATH/multixcan_output/hematuria_eqtl_smultixcan_mapped.txt > $HOMEPATH/multixcan_output/data_miami_plots/hematuria_eqtl_smultixcan_mapped.tsv

@@ -22,7 +22,7 @@ library(SNPlocs.Hsapiens.dbSNP144.GRCh38)
 
 # Arguments ----------------------------------------------------------------------
 
-project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/MR_analysis"
+project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/MR_analysis"
 
 dbsnp_144.GRCh37 <- SNPlocs.Hsapiens.dbSNP144.GRCh37
 dbsnp_144.GRCh38 <- SNPlocs.Hsapiens.dbSNP144.GRCh38
@@ -88,7 +88,7 @@ eGFRcys_ckdgen <- read.table(here(project_dir, "CKDGEN_sumstats", "eGFRcys_CKDGE
 
 head(eGFRcys_ckdgen)
 
-hematuria_ukbb <- read.table("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/summary_statistics/hematuria_sumstats.tsv", sep = "\t", header = T) %>%
+hematuria_ukbb <- read.table("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/summary_statistics/hematuria_sumstats.tsv", sep = "\t", header = T) %>%
   mutate(GWAS = "hematuria_UKBB",
          N = 16235 + 378356,
          maf = case_when(

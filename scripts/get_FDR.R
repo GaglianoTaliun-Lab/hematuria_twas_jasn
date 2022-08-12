@@ -1,6 +1,6 @@
 # https://github.com/StoreyLab/qvalue
 # script to compute FDR from the sprediXcan output pvalues
-# saves new files in the /home/hematuria_project/spredixcan_output/*qtl/ folder with the prefix "qvalues_"
+# saves new files in the /home/renal_genetics_project/spredixcan_output/*qtl/ folder with the prefix "qvalues_"
 # can run this script using salloc, as it doesnt require a lot of time/memory
 library(qvalue)
 library(dplyr)
@@ -12,7 +12,7 @@ fdr_threshold <- read.table("/scratch/fridald4/hematuria_scripts/list_of_tissues
 
 for (QTL in c("eqtl", "sqtl")) {
 
-  home_dir = paste("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/spredixcan_output/", QTL, sep="")
+  home_dir = paste("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/", QTL, sep="")
 
   # list files:
   filelist_full <- list.files(pattern = "^hematuria_TOPMed_imputed_", path = home_dir, full.names=TRUE)
@@ -40,4 +40,4 @@ for (QTL in c("eqtl", "sqtl")) {
 }
 
 colnames(fdr_threshold) <- c("tissue", "eqtl_FDR", "sqtl_FDR")
-write.table(fdr_threshold, "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/spredixcan_output/FDR_threshold_per_tissue.csv", row.names = F, quote = F, sep = "\t")
+write.table(fdr_threshold, "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/FDR_threshold_per_tissue.csv", row.names = F, quote = F, sep = "\t")

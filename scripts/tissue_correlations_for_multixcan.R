@@ -1,6 +1,6 @@
 library(dplyr)
 
-setwd("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/multixcan")
+setwd("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan")
 
 expression <- read.table("sharing_expression.txt", header = T, sep = "\t")
 rownames(expression) <- expression[,1]

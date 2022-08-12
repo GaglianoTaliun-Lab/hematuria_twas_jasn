@@ -10,7 +10,7 @@ library(readr)
 
 # Set arguments -----------------------------------------------------------
 
-project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project"
+project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
 
 # phenotypes to include in the matrix
 phenotypes_prox <- read.table(here(project_dir, "MR_analysis", "ldsc_corr", "list_traits.txt"), sep = "\t", header = F) %>% as.array() %>% sort()

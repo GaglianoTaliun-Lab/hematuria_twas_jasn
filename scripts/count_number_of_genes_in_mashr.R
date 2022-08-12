@@ -6,7 +6,7 @@ library(dplyr)
 library(ggplot2)
 
 # set home directory
-home_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/"
+home_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/"
 
 # read tissues list:
 tissues_list <- read.table("/scratch/fridald4/hematuria_scripts/list_of_tissues.txt")

@@ -9,7 +9,7 @@ library(gridExtra)
 library(ggrepel)
 library(hudson)
 
-home_dir="/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/spredixcan_output/data_miami_plots/"
+home_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/data_miami_plots/"
 
 # arguments
 args <- commandArgs(TRUE)
@@ -36,7 +36,7 @@ gwas <- read.table(paste(home_dir, "hematuria_GWAS_p_cutoff_0.1.tsv", sep=""), s
 colnames(gwas) <- c("SNP","CHR","POS","pvalue")
 
 # output directory
-out_dir="/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/spredixcan_output/figures/"
+out_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/figures/"
 
 # read list of tissues
 tissue <- read.table("/scratch/fridald4/hematuria_scripts/list_of_tissues.txt", header = F)

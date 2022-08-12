@@ -8,8 +8,8 @@ library(rtracklayer)
 library(gghighlight)
 library(forcats)
 
-project_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/MR_analysis/lava"
-ref_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project/reference_data"
+project_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/MR_analysis/lava"
+ref_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/reference_data"
 
 # arguments
 args <- commandArgs(TRUE)

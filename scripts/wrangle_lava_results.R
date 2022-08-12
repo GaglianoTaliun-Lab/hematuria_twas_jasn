@@ -2,7 +2,7 @@ library(dplyr)
 library(here)
 library(stringr)
 
-project_dir = "/home/fridald4/projects/def-gsarah/fridald4/hematuria_project"
+project_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
 
 ###------------------------------------------------- arguments
 args <- commandArgs(TRUE)

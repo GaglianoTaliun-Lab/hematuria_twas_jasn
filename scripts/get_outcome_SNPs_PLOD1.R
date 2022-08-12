@@ -13,7 +13,7 @@ library(data.table)
 # Set arguments
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/hematuria_project")
+project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project")
 
 snps_main <- c("rs873458", "rs61776489")
 snps_proxy_rs61776489 <- "rs2273291"
