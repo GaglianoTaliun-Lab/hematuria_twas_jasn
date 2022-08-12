@@ -1,0 +1,25 @@
+INFO - Processing GWAS command line parameters
+INFO - Building beta for /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/summary_statistics/hematuria_sumstats_with_chrpos_ID.txt.gz and /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/MASHR/sqtl/mashr/mashr_Small_Intestine_Terminal_Ileum.db
+INFO - Reading input gwas with special handling: /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/summary_statistics/hematuria_sumstats_with_chrpos_ID.txt.gz
+INFO - Processing input gwas
+INFO - Aligning GWAS to models
+INFO - Trimming output
+INFO - Successfully parsed input gwas in 121.55944864987396 seconds
+INFO - Started metaxcan process
+INFO - Loading model from: /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/MASHR/sqtl/mashr/mashr_Small_Intestine_Terminal_Ileum.db
+INFO - Loading covariance data from: /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/MASHR/sqtl/mashr/mashr_Small_Intestine_Terminal_Ileum.txt.gz
+INFO - Processing loaded gwas
+INFO - Started metaxcan association
+INFO - 10 % of model's snps found so far in the gwas study
+INFO - 20 % of model's snps found so far in the gwas study
+INFO - 30 % of model's snps found so far in the gwas study
+INFO - 40 % of model's snps found so far in the gwas study
+INFO - 50 % of model's snps found so far in the gwas study
+INFO - 60 % of model's snps found so far in the gwas study
+INFO - 70 % of model's snps found so far in the gwas study
+INFO - 80 % of model's snps found so far in the gwas study
+INFO - 90 % of model's snps found so far in the gwas study
+INFO - 95 % of model's snps used
+/lustre03/project/6054517/fridald4/hematuria_project/MetaXcan/software/metax/metaxcan/Utilities.py:315: FutureWarning: In a future version of pandas all arguments of DataFrame.drop except for the argument 'labels' will be keyword-only
+  results = results.drop("n_snps_in_model",1)
+INFO - Sucessfully processed metaxcan association in 20.87573190499097 seconds

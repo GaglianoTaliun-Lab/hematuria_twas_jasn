@@ -1,0 +1,13 @@
+# after downloading with wget the summary statistics of the Hematuria GWAS from UKBB with TOPMed imputations:
+
+> gunzip hematuria_sumstats.tsv.gz
+> awk '{FS = OFS = "\t"} NR==1{$(NF+1)="chrpos_ID"} NR>1{$(NF+1)="chr"$1"_"$2"_"$3"_"$4"_b38"}1' hematuria_sumstats.tsv > hematuria_sumstats_with_chrpos_ID.txt
+> gzip hematuria_sumstats_with_chrpos_ID.txt  # which outputs hematuria_sumstats_with_chrpos_ID.txt.gz
+
+# this is the file to use for spredixcan.sh
+
+# to use only those variants with rsids, first remove those that do not have rsid:
+> awk '{FS = OFS = "\t"} $5 ~ "rs"' hematuria_sumstats.tsv > tmp.out
+# then execute a command similar to the one above:
+> awk '{FS = OFS = "\t"} NR==1{$(NF+1)="chrpos_ID"} NR>1{$(NF+1)="chr"$1"_"$2"_"$3"_"$4"_b38"}1' tmp.out > hematuria_sumstats_only_rsids_with_chrpos_ID.txt
+> gzip hematuria_sumstats_only_rsids_with_chrpos_ID.txt 

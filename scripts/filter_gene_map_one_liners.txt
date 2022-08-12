@@ -1,0 +1,10 @@
+cd /scratch/fridald4/
+
+wget https://ftp.ncbi.nih.gov/gene/DATA/gene_neighbors.gz
+wget https://ftp.ncbi.nih.gov/gene/DATA/GENE_INFO/Mammalia/Homo_sapiens.gene_info.gz
+
+gunzip /scratch/fridald4/gene_neighbors.gz
+gunzip /scratch/fridald4/Homo_sapiens.gene_info
+
+awk ' {FS = OFS = "\t"} {print $2, $5, $6, $8}' /scratch/fridald4/gene_neighbors | awk '$4 != "MT" && $4 != "-"' > /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/geneID_pos_maplocation.txt
+awk ' {FS = OFS = "\t"} {print $2, $3, $7, $8}' /scratch/fridald4/Homo_sapiens.gene_info > /home/fridald4/projects/def-gsarah/fridald4/hematuria_project/gene_info_chr_maplocation.txt
