@@ -31,7 +31,7 @@ Short description of files in the repository to perform TWAS with MultiXcan:
 - **add_chrpos_sqtl.sh**: obtain the chr and pos of sQTLs
 - **wrangle_dara_for_heterogeneity_test_one_liners.txt**
 
-Scripts in this repository to perform genetic correlations:
+Scripts in this repository to perform genetic correlations (global and regional):
 - **preprocess_GWASdata_for_ldsc.R**
 - **run_munge_sumstats_for_ldsc.sh**
 - **run_ldsc.sh**
@@ -61,7 +61,7 @@ Scripts in this repository to perform MR analysis:
 - **two_sample_MR_P3H2.R**
 - **two_sample_MR_PLOD1.R**
 - **two_sample_MR_PLOD2.R**
-- **wrangle_dara_for_meta_MR.R**
+- **wrangle_data_for_meta_MR.R**
 
 Scripts in this repository to perform colocalization analysis:
 - **prepare_data_for_coloc.R**
