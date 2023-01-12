@@ -11,20 +11,13 @@ library(forcats)
 project_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/MR_analysis/lava"
 ref_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/reference_data"
 
-# arguments
-args <- commandArgs(TRUE)
-
-# GWAS phenotypes that were included in the LAVA run:
-datasets <- array(args[1:length(args)]) %>% sort()
-lava_output_name <- str_c(datasets, collapse = ":")
-
-bivar_all <- read.table(here(project_dir,"results","phenotypes_all_results_bivar.tsv"), sep = "\t", header = T)
-bivar_bonf <- read.table(here(project_dir,"results","phenotypes_significant_results_bivar.tsv"), sep = "\t", header = T)
+bivar_all <- read.table(here(project_dir,"results","acr:593_results_bivar.tsv"), sep = "\t", header = T)
+bivar_bonf <- read.table(here(project_dir,"results","acr:593_significant_results_bivar.tsv"), sep = "\t", header = T)
 
 source(here(project_dir, "plots_RHR.R"))
 
 # get number of bivariate tests
-bivar_rds <- readRDS(here(project_dir,"results",stringr::str_c(lava_output_name,".bivar.lava.rds")))
+bivar_rds <- readRDS(here(project_dir,"results","593:acr.bivar.lava.rds"))
 
 # get number of bivariate tests
 ntests = 0
@@ -37,8 +30,6 @@ for (i in 1:length(bivar_rds)) {
 
 # get pvalue bonferroni threshold
 pvalue_bivar = 0.05/ntests
-
-fct_disease = factor(datasets)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #### Heat map per LD block
@@ -64,7 +55,7 @@ bivar_all %>%
   geom_text(
     size = 6
   ) +
-  facet_wrap(vars(locus,locus_pos), ncol = 11) +
+  facet_wrap(vars(locus,locus_pos), ncol = 1) +
   scale_fill_distiller(palette = "RdBu", direction = -1, na.value = "#cccccc", limits = c(-1, 1), breaks = c(-1, -0.5, 0, 0.5, 1)) + theme_rhr +
   # theme(axis.text.x = element_text(angle = 90)) +
   theme(axis.text.x = element_blank(), axis.text.y = element_blank(),
@@ -75,9 +66,9 @@ bivar_all %>%
         legend.key.width = unit(3, 'cm'),
         legend.key.height = unit(0.5, 'cm'),
         strip.text.x = element_text(size = 12, margin = margin(0.2,3,0.2,3, "cm"))) +
-  labs(x = "eGFRcrea_stanzick2021", y = "eGFRcys_stanzick2021")
+  labs(x = "Hematuria (593)", y = "ACR")
 
-ggsave(here(project_dir, "figures", "phenotypes_heatmaps_per_LDblock.pdf"), width = 60, height = 55, units = "cm")
+ggsave(here(project_dir, "figures", "acr:593_heatmaps_per_LDblock.pdf"), width = 20, height = 20, units = "cm")
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #### Annotation Plots per LD block
@@ -114,7 +105,7 @@ for(i in 1:length(loci_gr)){
   
 }
 
-pdf(here(project_dir, "figures", "phenotypes_LDblock_annotations.pdf"))
+pdf(here(project_dir, "figures", "acr:593_LDblock_annotations.pdf"))
 fig_list
 dev.off()
 

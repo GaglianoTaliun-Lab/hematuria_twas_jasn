@@ -3,7 +3,7 @@
 library(dplyr)
 library(tidyr)
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan_output/"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/multixcan_output/"
 
 #### for sqtl, there are no gene names, therefore need to separate the chr and start-end position from gene_name
 
@@ -13,6 +13,6 @@ sqtl_results %>%
   separate(gene_name, c("chromosome", "position_start", "position_end")) -> sqtl_results2
 
 ### write output into new file:
-out_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan_output/"
+out_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/multixcan_output/"
 write.table(sqtl_results2, paste0(out_dir, "hematuria_sqtl_smultixcan_mapped.txt"), sep = "\t", row.names = F, quote = F)
 

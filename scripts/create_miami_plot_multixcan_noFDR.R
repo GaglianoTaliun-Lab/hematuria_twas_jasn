@@ -9,7 +9,7 @@ library(gridExtra)
 library(ggrepel)
 library(hudson)
 
-home_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan_output/data_miami_plots/"
+home_dir="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/multixcan_output/data_miami_plots/"
 
 # arguments
 args <- commandArgs(TRUE)
@@ -32,7 +32,7 @@ gwas <- read.table(paste0(home_dir,"hematuria_GWAS_p_cutoff_0.1.tsv"), sep="\t",
 colnames(gwas) <- c("SNP","CHR","POS","pvalue")
 
 # output directory
-out_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/multixcan_output/figures/"
+out_dir="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/multixcan_output/figures/"
 
 # import modified function
 source("/scratch/fridald4/hematuria_scripts/gmirror_v2.R")

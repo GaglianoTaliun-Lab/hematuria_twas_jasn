@@ -28,10 +28,10 @@ ld_blocks <-
 gwas_list <-
   setNames(
     object = list(
-      fread(here(project_dir,"MR_analysis","lava","input_data","stanzick2021_EUR_eGFRcrea.lava.gz")),
-      fread(here(project_dir,"MR_analysis","lava","input_data","stanzick2021_EUR_eGFRcys.lava.gz"))
+      fread(here(project_dir,"MR_analysis","lava", "input_data", "acr.lava.gz")),
+      fread(here(project_dir,"MR_analysis","lava", "input_data", "regenie-egfr.lava.gz"))
     ),
-    nm = c("stanzick2021_EUR_eGFRcrea", "stanzick2021_EUR_eGFRcys")
+    nm = c("acr", "regenie-egfr")
   )
 
 # Main --------------------------------------------------------------------
@@ -41,8 +41,7 @@ gr_list <-
   gwas_list %>%
   lapply(., function(each_gwas){
     each_gwas %>%
-      mutate(P = as.numeric(P)) %>%
-      dplyr::filter(P < 5e-8) %>%
+      dplyr::filter(Z < -5.45 | Z > 5.45) %>%
       GenomicRanges::makeGRangesFromDataFrame(
         .,
         keep.extra.columns = TRUE,
@@ -110,43 +109,11 @@ for(i in 1:length(gr_list)){
   
   names(overlap_df_list)[i] <- names(gr_list)[i]
   
-  if("OR" %in% names(gwas_list[[i]])){
+  overlap_df_list[[i]] <-
+    gr %>%
+    as_tibble() %>%
+    dplyr::select(seqnames, start, end, SNP, A1, A2, Z, N)
     
-    overlap_df_list[[i]] <-
-      gr %>%
-      as_tibble() %>%
-      dplyr::mutate(
-        BETA = NA,
-        SE = NA,
-        Z = NA,
-      ) %>%
-      dplyr::select(seqnames, start, end, SNP, A1, A2, BETA, SE, OR, Z, P, N)
-    
-  } else if ("Z" %in% names(gwas_list[[i]])){
-    
-    overlap_df_list[[i]] <-
-      gr %>%
-      as_tibble() %>%
-      dplyr::mutate(
-        BETA = NA,
-        SE = NA,
-        OR = NA,
-      ) %>%
-      dplyr::select(seqnames, start, end, SNP, A1, A2, BETA, SE, OR, Z, P, N)
-    
-  } else{
-    
-    # all other sumstats must have BETA/SE and not OR or Z:
-    overlap_df_list[[i]] <-
-      gr %>%
-      as_tibble() %>%
-      dplyr::mutate(
-        OR = NA,
-        Z = NA,
-      ) %>%
-      dplyr::select(seqnames, start, end, SNP, A1, A2, BETA, SE, OR, Z, P, N)
-  }
-  
   overlap_df_list[[i]] <-
     overlap_df_list[[i]] %>%
     dplyr::rename_with(
@@ -177,7 +144,7 @@ overlap_df <-
 
 write.table(
   loci,
-  here(project_dir, "MR_analysis", "lava", "input_data", "gwas_filtered.loci"),
+  here(project_dir, "MR_analysis", "lava", "input_data", "gwas_filtered_egfr_acr.loci"),
   sep = "\t",
   row.names = F,
   quote = F

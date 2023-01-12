@@ -16,7 +16,7 @@ library(readr)
 project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 
 # phenotypes to include in the matrix
-phenotypes <- read.table(here(project_dir, "MR_analysis", "lava", "input.info.txt"), sep = "\t", header = T) %>% .[,1] %>% as.array() %>% sort()
+phenotypes <- read.table(here(project_dir, "MR_analysis", "lava", "input_data", "input.info.acr.593.txt"), sep = "\t", header = T) %>% .[,1] %>% as.array() %>% sort()
 
 # read and write input/output directories:
 gwas_dir <- here(project_dir, "MR_analysis", "ldsc_corr")
@@ -36,10 +36,9 @@ n_read=1
 file_paths <-
   list.files(
     ldsc_dir,
-    pattern = ".log",
+    pattern = "dec2022.log",
     full.names = T
-  ) %>%
-  stringr::str_subset(., "rg_stanzick2021_EUR_eGFR[:alpha:]+_stanzick2021_EUR_eGFR[:alpha:]+")
+  )
 
 files <-
   vector(mode = "list",
@@ -93,14 +92,17 @@ rownames(covar_matrix) <- colnames(covar_matrix) <- phenotypes
 for(i in 1:length(phenotypes)) {
   for(j in 1:length(phenotypes)) {
     
-    covar_matrix[i,j] <-
-      all_rg %>%
-      dplyr::filter(p1 == phenotypes[i], p2 == phenotypes[j]) %>%
-      .[["gcov_int"]]
-    
+    if (i == j){
+      covar_matrix[i,j] <- 1
+    } else {
+      covar_matrix[i,j] <-
+        all_rg %>%
+        dplyr::filter(p1 == phenotypes[i], p2 == phenotypes[j]) %>%
+        .[["gcov_int"]]
+    }
   }
 }
-
+    
 # Sometimes there might be small differences in gcov_int depending on which phenotype was analysed as the outcome / predictor
 if (!all(t(covar_matrix)==covar_matrix)) {
   covar_matrix[lower.tri(covar_matrix)] <- t(covar_matrix)[lower.tri(covar_matrix)]
@@ -116,10 +118,8 @@ covar_matrix <-
 
 write.table(
   covar_matrix,
-  file = here(out_dir, stringr::str_c("sample_overlap.txt")),
+  file = here(out_dir, stringr::str_c("sample_overlap_acr_593.txt")),
   quote = F,
   row.names = phenotypes,
   sep = "\t"
 )
-
-

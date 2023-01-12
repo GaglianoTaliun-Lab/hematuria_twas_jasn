@@ -3,7 +3,7 @@ library(dplyr)
 library(ggplot2)
 
 # set home directory
-home_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/heatmap_data/"
+home_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/spredixcan_output/heatmap_data/"
 
 QTL="sqtl"
 
@@ -41,9 +41,9 @@ heatmap <- ggplot(data = data_plot, mapping = aes(x = tissue, y = reorder(gene_n
   guides(fill = guide_colourbar(title = "Z-score"), x = guide_axis(angle = 90))
 
 # save plot
-dir_plot = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/figures/"
+dir_plot = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/spredixcan_output/figures/"
 ggsave(plot=heatmap, filename=paste(dir_plot,"heatmap_",QTL,"_zscore_significant_all_tissues.pdf", sep=""), width = 25, height = 35, units = "cm")
 
 # save long format table
-dir_out = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/heatmap_data/"
+dir_out = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/spredixcan_output/heatmap_data/"
 write.table(tbl_sign, paste(dir_out,"significant_genes_",QTL,"_for_heatmap.out",sep=""), sep="\t", quote = FALSE, row.names = FALSE)

@@ -7,19 +7,16 @@ project_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_proje
 ###------------------------------------------------- arguments
 args <- commandArgs(TRUE)
 
-# prefix of LAVA output for that specific run:
-datasets <- as.character(args[1])
-
 # read RDS files
-bivar <- readRDS(here(project_dir,"MR_analysis","lava","results",stringr::str_c(datasets,".bivar.lava.rds")))
-univar <- readRDS(here(project_dir,"MR_analysis","lava","results",stringr::str_c(datasets,".univ.lava.rds")))
+bivar <- readRDS(here(project_dir,"MR_analysis","lava","results","acr:regenie-egfr.bivar.lava.rds"))
+univar <- readRDS(here(project_dir,"MR_analysis","lava","results","acr:regenie-egfr.univ.lava.rds"))
 
 ###---------------------------------------- Main
 
 # Univariate -----------------------------------
 
 # get number of univariate tests (number of loci in LAVA locus input)
-ntest_univ <- read.table(here(project_dir, "MR_analysis","lava", "input_data", "gwas_filtered.loci"), sep = "\t", header = T) %>% 
+ntest_univ <- read.table(here(project_dir, "MR_analysis","lava", "input_data", "gwas_filtered_egfr_acr.loci"), sep = "\t", header = T) %>% 
   nrow(.)
 
 # create dataframe with all univariate results
@@ -57,9 +54,9 @@ n_sig = nrow(bivar_significant)
 ### ---------------------------------------------- Save files
 
 # write all results into table
-write.table(bivar_all, here(project_dir,"MR_analysis","lava","results","phenotypes_all_results_bivar.tsv"), sep = "\t", quote = F, row.names = F)
-write.table(univ_all, here(project_dir,"MR_analysis","lava","results","phenotypes_all_results_univ.tsv"), sep = "\t", quote = F, row.names = F)
+write.table(bivar_all, here(project_dir,"MR_analysis","lava","results","acr:regenie-egfr_results_bivar.tsv"), sep = "\t", quote = F, row.names = F)
+write.table(univ_all, here(project_dir,"MR_analysis","lava","results","acr:regenie-egfr_results_univ.tsv"), sep = "\t", quote = F, row.names = F)
 
 # write significant results into table
-write.table(bivar_significant, here(project_dir,"MR_analysis","lava","results","phenotypes_significant_results_bivar.tsv"), sep = "\t", quote = F, row.names = F)
-write.table(univ_sign, here(project_dir,"MR_analysis","lava","results","phenotypes_significant_results_univ.tsv"), sep = "\t", quote = F, row.names = F)
+write.table(bivar_significant, here(project_dir,"MR_analysis","lava","results","acr:regenie-egfr_significant_results_bivar.tsv"), sep = "\t", quote = F, row.names = F)
+write.table(univ_sign, here(project_dir,"MR_analysis","lava","results","acr:regenie-egfr_significant_results_univ.tsv"), sep = "\t", quote = F, row.names = F)

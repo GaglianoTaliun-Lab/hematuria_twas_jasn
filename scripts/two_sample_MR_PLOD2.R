@@ -26,7 +26,7 @@ library(gtable)
 # current date - for output tables name
 date=str_remove_all(Sys.Date(), "-")
 
-project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/MR_analysis")
+project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/MR_analysis")
 
 # check available outcomes from the public API to obtain the ID (do it once)
 # ao <- available_outcomes()
@@ -52,7 +52,7 @@ find_cells <- function(table, row, col, name="core-fg"){
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # 1) Read exposure file for PLOD2 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# (obtained through Graham:"~/renal_genetics_project/MR_analysis/"
+# (obtained through Graham:"~/kidney_genetics_project/MR_analysis/"
 # from the eQTLs for Tibial Nerve downloaded from GTEx (EUR) GCP data:
 
 exposure_dat <- read_exposure_data(

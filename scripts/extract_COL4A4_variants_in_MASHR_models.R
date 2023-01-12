@@ -2,7 +2,7 @@ library(RSQLite)
 library(dplyr)
 QTL="sqtl"
 
-setwd(paste("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/MASHR/", QTL, "/mashr/", sep=""))
+setwd(paste("/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/MASHR/", QTL, "/mashr/", sep=""))
 
 # connect to db table:
 
@@ -23,6 +23,6 @@ for (i in 1:49) {
   else tissues[i,1] == "NA"
 }
 
-out_dir = "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/"
+out_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/"
 COL4A4_eQTLs <- tissues
 write.table(COL4A4_eQTLs, paste(out_dir, "COL4A4_variants_in_MASHR_models.csv", sep=""), sep = "\t", row.names = FALSE, quote = FALSE, na = "NA")

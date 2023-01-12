@@ -16,7 +16,7 @@ library(data.table)
 # Set arguments
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project")
+project_dir <- here("/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project")
 snps_main <- c("chr3_146150702_G_T_b38","chr3_146155352_A_T_b38","chr3_146157262_G_A_b38")
 snps_proxy_palindromic <- c("chr3_146140753_A_G_b38")
 snps_proxy_ckdgen <- c("chr3_146073016_G_T_b38","chr3_146114877_G_A_b38")

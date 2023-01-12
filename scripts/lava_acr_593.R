@@ -12,14 +12,14 @@ library(stringr)
 
 project_dir = "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 
-phenotypes <- read.table(here(project_dir, "MR_analysis", "lava", "input_data", "input.info.txt"), sep = "\t", header = T) %>% .[,1] %>% as.array() %>% sort()
+phenotypes <- read.table(here(project_dir, "MR_analysis", "lava", "input_data", "input.info.acr.593.txt"), sep = "\t", header = T) %>% .[,1] %>% as.array() %>% sort()
 
 args <-
   list(
     ref_prefix = here(project_dir,"reference_data","g1000_eur","g1000_eur"),
-    loc_file = here(project_dir,"MR_analysis","lava","input_data","gwas_plod1.loci"),
-    info_file = here(project_dir,"MR_analysis","lava","input_data","input.info.txt"),
-    sample_overlap_file = here(project_dir,"MR_analysis","lava","input_data","sample_overlap.txt"),
+    loc_file = here(project_dir,"MR_analysis","lava","input_data","gwas_filtered_593_acr.loci"),
+    info_file = here(project_dir,"MR_analysis","lava","input_data","input.info.acr.593.txt"),
+    sample_overlap_file = here(project_dir,"MR_analysis","lava","input_data","sample_overlap_acr_593.txt"),
     phenotypes = phenotypes,
     output_filename = str_c(phenotypes, collapse = ":")
   )
@@ -111,11 +111,11 @@ out_dir <- here(project_dir,"MR_analysis","lava","results")
 
 saveRDS(
   univar,
-  file = file.path(out_dir, str_c(args$output_filename, ".plod1.univ.lava.rds"))
+  file = file.path(out_dir, str_c(args$output_filename, ".univ.lava.rds"))
 )
 saveRDS(
   bivar,
-  file = file.path(out_dir, str_c(args$output_filename, ".plod1.bivar.lava.rds"))
+  file = file.path(out_dir, str_c(args$output_filename, ".bivar.lava.rds"))
 )
 
 print(str_c("Done! Analysis output written to ", out_dir, "/", args$output_filename,".*.lava"))

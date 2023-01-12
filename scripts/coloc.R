@@ -12,7 +12,7 @@ library(colochelpR)
 
 # Arguments ----------------------------------------------------------------------
 
-project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/MR_analysis"
+project_dir <- "/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/MR_analysis"
 
 p1 = 1e-04
 p2 = 1e-04
