@@ -11,7 +11,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=1G
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/spredixcan_output"
 TISSUE=$(sed -n ${SLURM_ARRAY_TASK_ID}p /scratch/fridald4/hematuria_scripts/list_of_tissues.txt)
 
 # output mapped data:

@@ -14,7 +14,7 @@ module load StdEnv/2020
 module load gcc/9.3.0
 module load metal/2011-03-25
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 
 metal ${HOMEPATH}/MR_analysis/meta_analysis_CKDgen_UKBB/metal_parameters_ACR_all.txt
 metal ${HOMEPATH}/MR_analysis/meta_analysis_CKDgen_UKBB/metal_parameters_ACR_noDM.txt

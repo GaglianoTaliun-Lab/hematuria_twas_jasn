@@ -25,7 +25,7 @@ pip install jsonschema==2.6.0
 pip install six==1.16.0+computecanada
 pip install bitarray==0.8.0
 
-project_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+project_dir="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 
 pip install -r ${project_dir}/ldsc/CC_requirements.txt
 

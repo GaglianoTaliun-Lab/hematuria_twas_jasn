@@ -14,7 +14,7 @@ module load StdEnv/2020
 module load python/3.7.9
 module load scipy-stack/2021a
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 QTL="sqtl" # or eqtl
 
 python $HOMEPATH/MetaXcan/software/SMulTiXcan.py \

@@ -11,7 +11,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=2G
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 TISSUE=$(sed -n ${SLURM_ARRAY_TASK_ID}p /scratch/fridald4/hematuria_scripts/list_of_tissues.txt)
 
 # create new files to print only tissue, chr, pos, gene name, zscore, pvalues, effect size and SE from annotated outputs
@@ -20,7 +20,7 @@ awk -v tissue="$TISSUE" '{OFS = "\t"} NR==1{print "tissue", $2, "chromosome", "p
 awk -v tissue="$TISSUE" '{OFS = "\t"} NR==1{print "tissue", "gene_name", "chromosome", "position", "zscore", "pvalue", "effect_size"} NR>1{print tissue, $1, $2, $3, $5, $7, $8}' $HOMEPATH/spredixcan_output/gene_mapped_results/hematuria_TOPMed_imputed_sqtl_${TISSUE}.tsv > $HOMEPATH/spredixcan_output/heatmap_data/hematuria_TOPMed_imputed_sqtl_all_${TISSUE}.out
 
 # afterwards, merge all the tissues into one file:
-# HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+# HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 # awk 'NR==1' $HOMEPATH/spredixcan_output/heatmap_data/hematuria_TOPMed_imputed_eqtl_all_Whole_Blood.out > $HOMEPATH/spredixcan_output/heatmap_data/all_genes_eqtl_for_foresplot.out
 # awk 'NR==1' $HOMEPATH/spredixcan_output/heatmap_data/hematuria_TOPMed_imputed_sqtl_all_Whole_Blood.out > $HOMEPATH/spredixcan_output/heatmap_data/all_genes_sqtl_for_foresplot.out
 # for i in {1..49} ; do TISSUE=$(sed -n ${i}p /scratch/fridald4/hematuria_scripts/list_of_tissues.txt) ; awk 'NR>1' $HOMEPATH/spredixcan_output/heatmap_data/hematuria_TOPMed_imputed_eqtl_all_${TISSUE}.out >> $HOMEPATH/spredixcan_output/heatmap_data/all_genes_eqtl_for_foresplot.out ; awk 'NR>1' $HOMEPATH/spredixcan_output/heatmap_data/hematuria_TOPMed_imputed_sqtl_all_${TISSUE}.out >> $HOMEPATH/spredixcan_output/heatmap_data/all_genes_sqtl_for_foresplot.out ; done

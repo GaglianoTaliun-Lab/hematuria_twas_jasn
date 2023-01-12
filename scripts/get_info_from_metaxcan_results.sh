@@ -1,4 +1,4 @@
-home_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+home_dir="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 
 # create empty table with header to put in all results (TISSUE, SYMBOL, ZSCORE, PVALUE)
 awk 'NR==1' ${home_dir}/spredixcan_output/eqtl/hematuria_TOPMed_imputed_eqtl_Kidney_Cortex.csv | awk '{print "tissue",$2,$3,$5}' > ${home_dir}/comparison_multixcan_predixcan_results_table.txt

@@ -1,7 +1,6 @@
 #!/bin/bash
 #SBATCH --account=def-gsarah
 #SBATCH --time=1:00:00
-#SBATCH --array=1-7
 #SBATCH --job-name=ldsc
 #SBATCH --output=slurm-%x.out
 #SBATCH --error=slurm-%x.err
@@ -25,19 +24,19 @@ pip install jsonschema==2.6.0
 pip install six==1.16.0+computecanada
 pip install bitarray==0.8.0
 
-project_dir="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project"
+project_dir="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project"
 
 pip install -r ${project_dir}/ldsc/CC_requirements.txt
 
-pheno1=$(sed -n ${SLURM_ARRAY_TASK_ID}p ${project_dir}/MR_analysis/ldsc_corr/list_traits.txt)
-n_studies=$(wc -l ${project_dir}/MR_analysis/ldsc_corr/list_traits.txt | awk '{print $1}')
+python ${project_dir}/ldsc/ldsc.py \
+	--ref-ld-chr ${project_dir}/reference_data/eur_w_ld_chr/ \
+	--out ${project_dir}/MR_analysis/ldsc_corr/rg_output/rg_593_ACR_dec2022 \
+	--rg ${project_dir}/MR_analysis/ldsc_corr/593.sumstats.gz,${project_dir}/MR_analysis/ldsc_corr/acr.sumstats.gz \
+	--w-ld-chr ${project_dir}/reference_data/eur_w_ld_chr/
 
-for ((i=1;i<=n_studies;i++))
-do
-	pheno2=$(sed -n ${i}p ${project_dir}/MR_analysis/ldsc_corr/list_traits.txt)
-	python ${project_dir}/ldsc/ldsc.py \
-		--ref-ld-chr ${project_dir}/reference_data/eur_w_ld_chr/ \
-		--out ${project_dir}/ldsc_corr/rg_output/rg_${pheno1}_${pheno2} \
-		--rg ${project_dir}/MR_analysis/ldsc_corr/${pheno1}.sumstats.gz,${project_dir}/MR_analysis/ldsc_corr/${pheno2}.sumstats.gz \
-		--w-ld-chr ${project_dir}/reference_data/eur_w_ld_chr/ 
-done
+python ${project_dir}/ldsc/ldsc.py \
+        --ref-ld-chr ${project_dir}/reference_data/eur_w_ld_chr/ \
+        --out ${project_dir}/MR_analysis/ldsc_corr/rg_output/rg_ACR_593_dec2022 \
+        --rg ${project_dir}/MR_analysis/ldsc_corr/acr.sumstats.gz,${project_dir}/MR_analysis/ldsc_corr/593.sumstats.gz \
+        --w-ld-chr ${project_dir}/reference_data/eur_w_ld_chr/
+

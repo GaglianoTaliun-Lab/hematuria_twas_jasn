@@ -10,7 +10,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=1G
 
-HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/renal_genetics_project/spredixcan_output/gene_mapped_results/"
+HOMEPATH="/home/fridald4/projects/def-gsarah/fridald4/kidney_genetics_project/spredixcan_output/gene_mapped_results/"
 
 awk '{OFS = "\t"} NR==1{print "tissue", $1, "n_snps"}' $HOMEPATH/hematuria_TOPMed_imputed_sqtl_Whole_Blood.tsv > /scratch/fridald4/snps_in_sites_per_tissue_from_spredixcan_results.tsv
 awk '{OFS = "\t"} NR==1{print "tissue", $1, $2, "n_snps"}' $HOMEPATH/mapped_hematuria_TOPMed_imputed_eqtl_Whole_Blood.csv > /scratch/fridald4/snps_in_genes_per_tissue_from_spredixcan_results.tsv
